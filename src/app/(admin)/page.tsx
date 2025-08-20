@@ -9,8 +9,8 @@ import DemographicCard from "@/components/ecommerce/DemographicCard";
 
 export const metadata: Metadata = {
   title:
-    "ActionFILMZ | App",
-  description: "Management Web Application for ActionFILMZ",
+    "ORCA | LIMS",
+  description: "Manage Laboratory Process with ORCA",
   icons: {
     icon: '/favicon.ico',
   },
