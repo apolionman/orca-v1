@@ -159,7 +159,7 @@ export default function CrewProfileModal({ crewMember, onClose }: Props) {
       };
     }).filter(Boolean);
   
-    const totalAmount = breakdown.reduce((acc, item) => acc + item.total, 0);
+    const totalAmount = null//breakdown.reduce((acc, item) => acc + item.total, 0);
   
     // PDF generation logic to come next...
   
@@ -169,7 +169,7 @@ export default function CrewProfileModal({ crewMember, onClose }: Props) {
       start_date: invoiceStartDate.toISOString(),
       end_date: invoiceEndDate.toISOString(),
       total: totalAmount,
-      job_order_ids: breakdown.map(b => b.job_order_id),
+      job_order_ids: 0,//breakdown.map(b => b.job_order_id),
       breakdown: breakdown,
     });
 
@@ -202,25 +202,25 @@ export default function CrewProfileModal({ crewMember, onClose }: Props) {
     y += 10;
 
     // Create table rows from breakdown
-    const tableData = breakdown.map((item) => [
-      item.title,
-      `${item.days} (${item.unit}) ${item.days > 1 ? '' : ''}`,
-      `${item.rate.toLocaleString()} ${item.currency}`,
-      `${item.total.toLocaleString()}`,
-    ]);
+    // const tableData = breakdown.map((item) => [
+    //   item.title,
+    //   `${item.days} (${item.unit}) ${item.days > 1 ? '' : ''}`,
+    //   `${item.rate.toLocaleString()} ${item.currency}`,
+    //   `${item.total.toLocaleString()}`,
+    // ]);
 
     // Add the table
-    autoTable(doc, {
-      startY: y,
-      head: [['Job Title', 'Units', 'Rate', 'Total']],
-      body: tableData,
-    });
+    // autoTable(doc, {
+    //   startY: y,
+    //   head: [['Job Title', 'Units', 'Rate', 'Total']],
+    //   body: tableData,
+    // });
 
-    // Add total below table
-    const finalY = (doc as any).lastAutoTable.finalY || 30;
-    doc.text(`Total: ${totalAmount.toLocaleString()} AED`, 10, finalY + 10);
+    // // Add total below table
+    // const finalY = (doc as any).lastAutoTable.finalY || 30;
+    // doc.text(`Total: ${totalAmount.toLocaleString()} AED`, 10, finalY + 10);
 
-    doc.save(`Invoice-${crewMember.full_name}.pdf`);
+    // doc.save(`Invoice-${crewMember.full_name}.pdf`);
   
     setIsGenerating(false);
   };  

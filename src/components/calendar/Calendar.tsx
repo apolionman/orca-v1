@@ -423,7 +423,7 @@ const Calendar: React.FC = () => {
                             className="rounded-full object-cover"
                           />
                         ) : (
-                          <Avatar src={undefined} name={member.full_name} size={24} />
+                          <Avatar src={member.avatar_url} name={member.full_name} size={24} />
                         )}
                           <span>{member.full_name}</span>
                         </div>
